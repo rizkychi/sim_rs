@@ -32,6 +32,12 @@ class AuthController extends Controller
         return ['status' => false, 'message' => 'username not found'];
     }
 
+    public function userInfo(Request $request)
+    {
+        $token = cr_token::where('token', $request->bearerToken())->first();
+        return $token->cr_user;
+    }
+
     public function register(Request $request)
     {
         //validation for username (must be unique)
