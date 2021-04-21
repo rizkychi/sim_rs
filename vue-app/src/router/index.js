@@ -3,6 +3,7 @@ import store from '../store'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import User from '../views/User.vue'
 import error404 from '../views/404.vue'
 
 const routes = [
@@ -23,6 +24,14 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: User,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/404',

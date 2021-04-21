@@ -24,7 +24,9 @@ Route::middleware('api')->group(function() {
     Route::get('/', 'AuthController@forbidden')->name('forbidden');
 
     Route::middleware('auth:api')->group(function() {
-        Route::get('/user', 'AuthController@userInfo');
+        Route::get('/user', 'UserController@index');
+        Route::put('/user', 'UserController@update');
+        Route::delete('/user', 'UserController@destroy');
 
         Route::get('/menu', 'MenuController@index');
     });

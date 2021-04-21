@@ -9,7 +9,7 @@
           </div>
           <form @submit.prevent="submit">
             <div class="form-group">
-              <label for="username">Email address</label>
+              <label for="username">Username</label>
               <input
                 id="username"
                 type="text"
@@ -61,6 +61,7 @@ export default {
     }),
 
     submit() {
+      this.loginError.status = false;
       this.login(this.form).then((result) => {
         if (result.status) {
           this.$router.replace({

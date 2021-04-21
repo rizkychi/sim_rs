@@ -99,6 +99,38 @@ export default ({
             return response.data
         },
 
+        async update({ commit }, user) {
+            try {
+                let response = await axios.put('user', user, {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+
+                commit('SET_USER', response.data.user)
+
+                return response.data
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        async delete({ dispatch }) {
+            try {
+                let response = await axios.delete('user', {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+
+                dispatch('logout')
+
+                return response.data
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
         logout({ commit }) {
             localStorage.removeItem('token')
             localStorage.removeItem('auth')

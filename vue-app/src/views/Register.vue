@@ -88,6 +88,7 @@ export default {
     }),
 
     submit() {
+      this.isSubmitted = false;
       this.register(this.form).then((result) => {
         this.registerError.status = result.status;
         this.registerError.message = result.message;

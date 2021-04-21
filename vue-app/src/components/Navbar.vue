@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" to="/">Navbar</router-link>
+    <router-link class="navbar-brand" to="/">SIK RS</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -28,12 +28,10 @@
       <span v-if="authenticated" class="navbar-text">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <span class="user-text">
-              Hi, {{ user.user }} ({{ user.username }})
-            </span>
+            <router-link class="nav-link" to="/user">Hi, {{ user.user }} ({{ user.username }})</router-link>
           </li>
           <li class="nav-item">
-            <a href="#" @click="logoutAction">Logout</a>
+            <a href="#" class="nav-link" @click="logoutAction">Logout</a>
           </li>
         </ul>
       </span>
@@ -80,13 +78,15 @@ export default {
   },
 
   created() {
-    this.menu_temp = JSON.parse(localStorage.getItem("menu"));
+    if (this.menus == null) {
+      this.menu_temp = JSON.parse(localStorage.getItem("menu"));
+    }
   },
 };
 </script>
 
 <style>
-.user-text {
-  margin: 0 15px;
+.nav-link:hover {
+  color: #42b983 !important;
 }
 </style>
