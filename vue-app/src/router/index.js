@@ -34,6 +34,30 @@ const routes = [
     }
   },
   {
+    path: '/poli',
+    name: 'Poli',
+    component: () => import('../views/Poli/All.vue'),
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/poli/create',
+    name: 'PoliCreate',
+    component: () => import('../views/Poli/Add.vue'),
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/poli/:id/edit',
+    name: 'PoliEdit',
+    component: () => import('../views/Poli/Edit.vue'),
+    meta: {
+      auth: true
+    }
+  },
+  {
     path: '/404',
     name: 'Not found',
     component: error404

@@ -29,5 +29,6 @@ Route::middleware('api')->group(function() {
         Route::delete('/user', 'UserController@destroy');
 
         Route::get('/menu', 'MenuController@index');
+        Route::resource('/poli', 'PoliController')->except(['create', 'edit']);
     });
 });

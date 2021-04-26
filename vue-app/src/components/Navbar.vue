@@ -13,12 +13,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul v-if="authenticated" class="navbar-nav mr-auto">
+      <ul v-if="authenticated && menus" class="navbar-nav mr-auto">
         <li v-for="menu in menus" :key="menu.menu_id" class="nav-item">
           <router-link class="nav-link" v-bind:to="menu.url">{{
             menu.menu
           }}</router-link>
         </li>
+      </ul>
+      <ul v-if="authenticated && !menus" class="navbar-nav mr-auto">
         <li v-for="menu in menu_temp" :key="menu.menu_id" class="nav-item">
           <router-link class="nav-link" v-bind:to="menu.url">{{
             menu.menu
@@ -77,10 +79,8 @@ export default {
     };
   },
 
-  created() {
-    if (this.menus == null) {
-      this.menu_temp = JSON.parse(localStorage.getItem("menu"));
-    }
+  mounted() {
+    this.menu_temp = JSON.parse(localStorage.getItem("menu"));
   },
 };
 </script>
